@@ -9,6 +9,6 @@ I ran this for a few weeks on my [laion-icons](https://github.com/unixpickle/lai
  3. A blue square. A simple blue square icon.
  4. a cute corgi vector graphic. corgi dog graphic
 
-![Samples from the model](Images/sapmles.png)
+![Samples from the model](Images/samples.png)
 
 Clearly the model has learned something, although it's not particularly good for most prompts.
