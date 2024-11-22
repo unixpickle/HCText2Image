@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HCText2Image</title>
+
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        #prompt-container {
+            position: relative;
+            width: 300px;
+            margin: auto;
+            height: 30px;
+        }
+
+        #prompt {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            line-height: 30px;
+            width: 220px;
+            box-sizing: border-box;
+            border: 1px solid #d5d5d5;
+        }
+
+        #guidance-scale-container {
+            text-align: center;
+        }
+
+        #generate-button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            border: none;
+            margin: 0;
+            height: 30px;
+            width: 80px;
+        }
+
+        #prompt:focus,
+        #generate-button:focus {
+            outline: 0;
+        }
+
+        #output {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+        }
+
+        #loader {
+            display: none;
+            position: absolute;
+            left: calc(50% - 50px);
+            top: calc(50% - 10px);
+            width: 100px;
+            height: 20px;
+            background-color: #aaa;
+        }
+
+        #loader-contents {
+            position: absolute;
+            left: 0;
+            height: 100%;
+            background-color: #65bcd4;
+        }
+
+        #error {
+            display: none;
+            color: red;
+            text-align: center;
+        }
+
+        #sampled-image {
+            position: absolute;
+            left: calc(50% - 128px);
+            top: calc(50% - 128px);
+            width: 256px;
+            height: 256px;
+        }
+
+        #output.error>#error {
+            display: block;
+        }
+
+        #output.loading>#loader {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="prompt-container">
+        <input id="prompt" placeholder="Prompt for image">
+        <button id="generate-button">Generate</button>
+    </div>
+    <div id="guidance-scale-container">
+        <label>Guidance scale:</label>
+        <input id="guidance-scale" value="8">
+    </div>
+    <div id="output">
+        <img id="sampled-image">
+        <div id="loader">
+            <div id="loader-contents"></div>
+        </div>
+        <label id="error"></label>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+
+</html>
