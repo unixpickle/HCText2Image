@@ -1,6 +1,6 @@
 # HCText2Image
 
-Train a toy autoregressive image generator and VQ codes.
+Train a toy autoregressive image generator and a VQ encoder/decoder.
 
 I ran this for a few weeks on my [laion-icons](https://github.com/unixpickle/laion-icons) dataset.
 It does learn *something*&mdash;it clearly understands something about colors and basic shapes,
@@ -9,7 +9,7 @@ However, for most prompts, the samples are pretty much garbage.
 
 For a big dump of samples, see [this page](https://data.aqnichol.com/hctext2image/samples/).
 
-Here are some samples for the prompts:
+Here are some samples for the following prompts, sweeping guidance scales 1, 2, 4, and 8:
 
  1. a red heart icon, red heart vector graphic
  2. a green tree, a tree with green leaves
