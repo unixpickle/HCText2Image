@@ -7,6 +7,8 @@ It does learn *something*&mdash;it clearly understands something about colors an
 as shown by the few cases where the model actually follows the prompt.
 However, for most prompts, the samples are pretty much garbage.
 
+For a big dump of samples, see [this page](https://data.aqnichol.com/hctext2image/samples/).
+
 Here are some samples for the prompts:
 
  1. a red heart icon, red heart vector graphic
