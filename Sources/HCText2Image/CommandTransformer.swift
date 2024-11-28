@@ -35,7 +35,7 @@ class CommandTransformer: Command {
   let captionBytes: Int = 128
   let saveInterval: Int = 5000
   let cfgProb: Float = 0.1
-  let cfgScales: [Float] = [1.0, 2.0, 4.0]
+  let cfgScales: [Float] = [1.0, 2.0, 4.0, 8.0]
 
   let savePath: String
   let vqPath: String
@@ -56,6 +56,8 @@ class CommandTransformer: Command {
   }
 
   init(_ args: [String]) throws {
+    Backend.defaultBackend = try MPSBackend(allocator: .heap(12_000_000_000))
+
     if args.count != 3 {
       print("Usage: Text2Image transformer <data_dir> <vq_path> <save_path>")
       throw ArgumentError.invalidArgs
@@ -214,8 +216,8 @@ class CommandTransformer: Command {
     print("sampling to \(filename) ...")
     var images = [Tensor]()
     for scale in cfgScales {
-      let gen = try await Backend.current.createRandom()
-      try await gen.seed(step)
+      let gen = Backend.current.createRandom()
+      gen.seed(step)
 
       let captions = captionTensor(testCaptions)
       let samples = try await model.sample(prefixes: captions, generator: gen, cfgScale: scale)

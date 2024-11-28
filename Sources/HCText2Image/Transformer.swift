@@ -263,9 +263,7 @@ class Transformer: Trainable {
               logits
             }
 
-          let gumbels = prevToken.asDependency {
-            -(-Tensor(randLike: guidedLogits, generator: generator).log()).log()
-          }
+          let gumbels = -(-Tensor(randLike: guidedLogits, generator: generator).log()).log()
           let samples = (guidedLogits + gumbels).argmax(axis: -1).unsqueeze(axis: 1)
           if cfgScale == nil {
             prevToken = samples
